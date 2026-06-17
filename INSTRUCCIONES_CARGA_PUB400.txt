@@ -1,0 +1,155 @@
+===============================================================================
+INSTRUCCIONES DE CARGA A PUB400.COM - QSQLSRC
+===============================================================================
+
+OBJETIVO:
+Cargar 114 miembros SQL a la biblioteca FGUTIERRM1, archivo QSQLSRC
+
+ARCHIVOS A SUBIR:
+- Todos los archivos *.sql de esta carpeta (114 archivos)
+
+MÉTODO RECOMENDADO: FTP BINARIO O SFTP
+
+===============================================================================
+PASO 1: CONECTAR A PUB400.COM
+===============================================================================
+
+Usando SFTP (SSH File Transfer Protocol):
+    Host: pub400.com
+    Usuario: [Su usuario IBM i]
+    Contraseña: [Su contraseña]
+    Puerto: 22
+
+O usando FTP tradicional:
+    Host: pub400.com
+    Usuario: [Su usuario IBM i]
+    Contraseña: [Su contraseña]
+    Puerto: 21
+
+===============================================================================
+PASO 2: CREAR O IR A LA BIBLIOTECA FGUTIERRM1
+===============================================================================
+
+En IBM i comando:
+    CRTSRCPF FILE(FGUTIERRM1/QSQLSRC) RCDLEN(92)
+
+(Si ya existe el archivo, omitir este paso)
+
+===============================================================================
+PASO 3: SUBIR LOS ARCHIVOS SQL
+===============================================================================
+
+A. Usando FTP:
+   
+   ftp pub400.com
+   > USER [usuario]
+   > PASS [contraseña]
+   > SITE CHGCURDIR /home/[usuario]
+   > BINARY
+   > MPUT *.sql
+   > QUIT
+
+B. Usando SFTP:
+   
+   sftp [usuario]@pub400.com
+   > cd /home/[usuario]
+   > mput *.sql
+   > quit
+
+C. Usando SCP (desde Windows con OpenSSH):
+   
+   scp *.sql [usuario]@pub400.com:/home/[usuario]/
+
+===============================================================================
+PASO 4: CREAR LOS MIEMBROS EN QSQLSRC CON DESCRIPCIONES
+===============================================================================
+
+Ejecutar el siguiente comando en IBM i para cada archivo:
+(O usar un programa batch para todos a la vez)
+
+ADDMBR MBR(nombre_miembro) FILE(FGUTIERRM1/QSQLSRC) SRCTYPE(SQL) TEXT('descripción')
+
+EJEMPLOS (primeros 5):
+- ADDMBR MBR(ACMST) FILE(FGUTIERRM1/QSQLSRC) SRCTYPE(SQL) TEXT('Archivo Maestro de Cuentas de Detalle')
+- ADDMBR MBR(APCLS) FILE(FGUTIERRM1/QSQLSRC) SRCTYPE(SQL) TEXT('Archivo Maestro de Productos')
+- ADDMBR MBR(APPRV) FILE(FGUTIERRM1/QSQLSRC) SRCTYPE(SQL) TEXT('Cobranzas pendientes de Aprobacion')
+- ADDMBR MBR(AUDIT) FILE(FGUTIERRM1/QSQLSRC) SRCTYPE(SQL) TEXT('Detalle diario de transacciones de caja')
+- ADDMBR MBR(BAHIS) FILE(FGUTIERRM1/QSQLSRC) SRCTYPE(SQL) TEXT('Historico de Cuentas por Pagar')
+
+IMPORTANTE: Ver archivo "carga_qsqlsrc.txt" para el comando ADDMBR completo de los 114 miembros
+
+===============================================================================
+PASO 5: COPIAR EL CONTENIDO DE LOS ARCHIVOS A LOS MIEMBROS
+===============================================================================
+
+Opción A: Usando CPYFRM en IBM i
+
+Para cada archivo, desde el IFS copy el contenido al miembro:
+    CPYFRM FROMFILE('/home/[usuario]/ACMST.sql') TOFILE(FGUTIERRM1/QSQLSRC) TOMBRNAME(ACMST)
+
+O usar programas CL batch para automatizar esto.
+
+Opción B: Usando WRKMBR
+
+En IBM i:
+    WRKMBR FILE(FGUTIERRM1/QSQLSRC)
+    Editar cada miembro y pegar el contenido del archivo *.sql
+
+===============================================================================
+PASO 6: VALIDAR LA CARGA
+===============================================================================
+
+1. Verificar que todos los miembros están creados:
+   WRKMBR FILE(FGUTIERRM1/QSQLSRC)
+
+2. Verificar el contenido de un miembro:
+   EDTF MEMBER(FGUTIERRM1/QSQLSRC/ACMST)
+
+3. Verificar las descripciones:
+   DSPMBRLIST FILE(FGUTIERRM1/QSQLSRC)
+
+===============================================================================
+CARACTERÍSTICAS PRINCIPALES DE LA CARGA
+===============================================================================
+
+✓ 114 miembros SQL
+✓ Tipo: SQL
+✓ Líneas máximo: 80 caracteres (compatible con PUB400)
+✓ Indentación: Preservada (legible)
+✓ Descripciones: Truncadas a máximo 50 caracteres
+✓ Formato: Originalidad de scripts preservada
+
+===============================================================================
+DESCRIPCIONES TRUNCADAS (5 miembros)
+===============================================================================
+
+1. CNOFT      → Archivo Maestro de Tablas de Datos Comunes para ge... (50 chars)
+2. DPMST      → Cabecera Declaracion Patrimonial Personas Naturale... (50 chars)
+3. IFMST      → Cabecera Declaracion Patrimonial Personas Juridica... (50 chars)
+4. MLNCT      → Archivo de patrones y formatos de Notificaciones a... (50 chars)
+5. MLNOT      → Archivo que contiene los datos a imprimir en la no... (50 chars)
+
+Ver archivo "miembros_qsqlsrc_truncados.csv" para todas las descripciones.
+
+===============================================================================
+REFERENCIAS
+===============================================================================
+
+Archivo de comandos:          carga_qsqlsrc.txt
+Referencia CSV:               miembros_qsqlsrc_truncados.csv
+Scripts SQL:                  *.sql (114 archivos)
+Verificación de líneas:       verificacion_final.py
+
+===============================================================================
+CONTACTO/SOPORTE
+===============================================================================
+
+Si encuentra errores en PUB400 al ejecutar los scripts, revisar:
+1. Que las líneas no superen 80 caracteres (usar verificacion_final.py)
+2. Que la sintaxis SQL sea correcta
+3. Que exista la biblioteca FGUTIERRM1
+
+===============================================================================
+GENERADO: 2026-06-17
+STATUS: LISTO PARA CARGA
+===============================================================================

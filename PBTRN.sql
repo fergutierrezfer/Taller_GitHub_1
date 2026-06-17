@@ -13,7 +13,8 @@
 -- Proyecto: Taller GitHub - IBM i
 -- =====================================================================
 
-CREATE OR REPLACE TABLE FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro FOR SYSTEM NAME PBTRN
+CREATE OR REPLACE TABLE FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro FOR
+SYSTEM NAME PBTRN
 (
     id_registro                    FOR COLUMN IDREG    BIGINT NOT NULL,
     descripcion                    FOR COLUMN DESC     VARCHAR(120),
@@ -29,43 +30,73 @@ CREATE OR REPLACE TABLE FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro FOR SYSTE
 )
 RCDFMT PBTRNREC;
 
-COMMENT ON TABLE FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro IS 'Transacciones de Libretas de Ahorro';
+COMMENT ON TABLE FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro IS
+'Transacciones de Libretas de Ahorro';
 
 LABEL ON TABLE FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro IS 'PBTRN';
 
-COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.id_registro IS 'Identificador del registro';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.id_registro IS 'IDREG';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.id_registro TEXT IS 'Identificador del registro';
+COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.id_registro IS
+'Identificador del registro';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.id_registro IS
+'IDREG';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.id_registro TEXT
+IS 'Identificador del registro';
 
-COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.descripcion IS 'Descripcion';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.descripcion IS 'DESC';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.descripcion TEXT IS 'Descripcion';
+COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.descripcion IS
+'Descripcion';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.descripcion IS
+'DESC';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.descripcion TEXT
+IS 'Descripcion';
 
-COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.usuario_creacion IS 'Usuario creacion';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.usuario_creacion IS 'USCRE';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.usuario_creacion TEXT IS 'Usuario creacion';
+COMMENT ON COLUMN
+FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.usuario_creacion IS 'Usuario
+creacion';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.usuario_creacion
+IS 'USCRE';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.usuario_creacion
+TEXT IS 'Usuario creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.usuario_actualizacion IS 'Usuario actualizacion';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.usuario_actualizacion IS 'USACT';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.usuario_actualizacion TEXT IS 'Usuario actualizacion';
+COMMENT ON COLUMN
+FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.usuario_actualizacion IS 'Usuario
+actualizacion';
+LABEL ON COLUMN
+FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.usuario_actualizacion IS 'USACT';
+LABEL ON COLUMN
+FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.usuario_actualizacion TEXT IS
+'Usuario actualizacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.version_registro IS 'Version';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.version_registro IS 'VRSRG';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.version_registro TEXT IS 'Version';
+COMMENT ON COLUMN
+FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.version_registro IS 'Version';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.version_registro
+IS 'VRSRG';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.version_registro
+TEXT IS 'Version';
 
-COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.observaciones IS 'Observaciones';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.observaciones IS 'OBSRV';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.observaciones TEXT IS 'Observaciones';
+COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.observaciones
+IS 'Observaciones';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.observaciones IS
+'OBSRV';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.observaciones
+TEXT IS 'Observaciones';
 
-COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.estado_registro IS 'Estado';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.estado_registro IS 'ESTDO';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.estado_registro TEXT IS 'Estado';
+COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.estado_registro
+IS 'Estado';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.estado_registro
+IS 'ESTDO';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.estado_registro
+TEXT IS 'Estado';
 
-COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.created_at IS 'Fecha creacion';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.created_at IS 'CRTM';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.created_at TEXT IS 'Fecha creacion';
+COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.created_at IS
+'Fecha creacion';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.created_at IS
+'CRTM';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.created_at TEXT
+IS 'Fecha creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.updated_at IS 'Fecha actualizacion';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.updated_at IS 'UPDTM';
-LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.updated_at TEXT IS 'Fecha actualizacion';
-
+COMMENT ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.updated_at IS
+'Fecha actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.updated_at IS
+'UPDTM';
+LABEL ON COLUMN FGUTIERRM1.Transacciones_de_Libretas_de_Ahorro.updated_at TEXT
+IS 'Fecha actualizacion';

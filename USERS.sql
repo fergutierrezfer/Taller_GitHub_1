@@ -13,7 +13,8 @@
 -- Proyecto: Taller GitHub - IBM i
 -- =====================================================================
 
-CREATE OR REPLACE TABLE FGUTIERRM1.Archivo_de_Autorizaciones_por_menus FOR SYSTEM NAME USERS
+CREATE OR REPLACE TABLE FGUTIERRM1.Archivo_de_Autorizaciones_por_menus FOR
+SYSTEM NAME USERS
 (
     id_registro                    FOR COLUMN IDREG    BIGINT NOT NULL,
     descripcion                    FOR COLUMN DESC     VARCHAR(120),
@@ -29,43 +30,73 @@ CREATE OR REPLACE TABLE FGUTIERRM1.Archivo_de_Autorizaciones_por_menus FOR SYSTE
 )
 RCDFMT USERSREC;
 
-COMMENT ON TABLE FGUTIERRM1.Archivo_de_Autorizaciones_por_menus IS 'Archivo de Autorizaciones por menus';
+COMMENT ON TABLE FGUTIERRM1.Archivo_de_Autorizaciones_por_menus IS 'Archivo de
+Autorizaciones por menus';
 
 LABEL ON TABLE FGUTIERRM1.Archivo_de_Autorizaciones_por_menus IS 'USERS';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.id_registro IS 'Identificador del registro';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.id_registro IS 'IDREG';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.id_registro TEXT IS 'Identificador del registro';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.id_registro IS
+'Identificador del registro';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.id_registro IS
+'IDREG';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.id_registro TEXT
+IS 'Identificador del registro';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.descripcion IS 'Descripcion';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.descripcion IS 'DESC';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.descripcion TEXT IS 'Descripcion';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.descripcion IS
+'Descripcion';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.descripcion IS
+'DESC';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.descripcion TEXT
+IS 'Descripcion';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.usuario_creacion IS 'Usuario creacion';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.usuario_creacion IS 'USCRE';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.usuario_creacion TEXT IS 'Usuario creacion';
+COMMENT ON COLUMN
+FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.usuario_creacion IS 'Usuario
+creacion';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.usuario_creacion
+IS 'USCRE';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.usuario_creacion
+TEXT IS 'Usuario creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.usuario_actualizacion IS 'Usuario actualizacion';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.usuario_actualizacion IS 'USACT';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.usuario_actualizacion TEXT IS 'Usuario actualizacion';
+COMMENT ON COLUMN
+FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.usuario_actualizacion IS 'Usuario
+actualizacion';
+LABEL ON COLUMN
+FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.usuario_actualizacion IS 'USACT';
+LABEL ON COLUMN
+FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.usuario_actualizacion TEXT IS
+'Usuario actualizacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.version_registro IS 'Version';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.version_registro IS 'VRSRG';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.version_registro TEXT IS 'Version';
+COMMENT ON COLUMN
+FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.version_registro IS 'Version';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.version_registro
+IS 'VRSRG';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.version_registro
+TEXT IS 'Version';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.observaciones IS 'Observaciones';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.observaciones IS 'OBSRV';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.observaciones TEXT IS 'Observaciones';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.observaciones
+IS 'Observaciones';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.observaciones IS
+'OBSRV';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.observaciones
+TEXT IS 'Observaciones';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.estado_registro IS 'Estado';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.estado_registro IS 'ESTDO';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.estado_registro TEXT IS 'Estado';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.estado_registro
+IS 'Estado';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.estado_registro
+IS 'ESTDO';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.estado_registro
+TEXT IS 'Estado';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.created_at IS 'Fecha creacion';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.created_at IS 'CRTM';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.created_at TEXT IS 'Fecha creacion';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.created_at IS
+'Fecha creacion';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.created_at IS
+'CRTM';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.created_at TEXT
+IS 'Fecha creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.updated_at IS 'Fecha actualizacion';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.updated_at IS 'UPDTM';
-LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.updated_at TEXT IS 'Fecha actualizacion';
-
+COMMENT ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.updated_at IS
+'Fecha actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.updated_at IS
+'UPDTM';
+LABEL ON COLUMN FGUTIERRM1.Archivo_de_Autorizaciones_por_menus.updated_at TEXT
+IS 'Fecha actualizacion';

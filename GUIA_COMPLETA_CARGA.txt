@@ -1,0 +1,311 @@
+╔════════════════════════════════════════════════════════════════════════╗
+║           GUÍA COMPLETA DE CARGA SQL A PUB400.COM QSQLSRC              ║
+║                        FGUTIERRM1/QSQLSRC                              ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+DESCRIPCIÓN GENERAL
+═══════════════════════════════════════════════════════════════════════════
+
+Este documento describe cómo cargar automáticamente 114 archivos SQL a 
+PUB400.COM, creando miembros en FGUTIERRM1/QSQLSRC con las descripciones 
+correctas (primeras 50 caracteres de la línea 3 de cada archivo).
+
+ARCHIVOS GENERADOS
+═══════════════════════════════════════════════════════════════════════════
+
+1. pub400_manager.py
+   ├─ Programa Python principal (multiplataforma: Windows/Linux/Mac)
+   ├─ Funciones: Conectar → Subir archivos → Crear miembros
+   ├─ Requiere: paramiko (pip install paramiko)
+   └─ Uso recomendado: Para usuarios Windows con Python
+
+2. CARGQSQL.CLLE
+   ├─ Programa CL compilable en IBM i
+   ├─ Función: Procesar archivos desde IFS, crear miembros
+   └─ Uso: Compilar con CRTBNDCL en PUB400.COM
+
+3. cargqsql.sh
+   ├─ Script shell ejecutable en Qshell (PUB400.COM)
+   ├─ Función: Listar archivos, extraer descripciones, generar comandos
+   └─ Uso: Ejecutar directamente en PUB400.COM
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                     OPCIÓN 1: MÉTODO AUTOMATIZADO (RECOMENDADO)       ║
+║                      Usar pub400_manager.py desde Windows             ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+REQUISITOS PREVIOS
+──────────────────────────────────────────────────────────────────────────
+✓ Python 3.7+ instalado en Windows
+✓ Credenciales de usuario en PUB400.COM
+✓ Acceso SFTP/SSH habilitado en PUB400.COM (típicamente disponible)
+
+PASOS A SEGUIR
+──────────────────────────────────────────────────────────────────────────
+
+PASO 1: Instalar dependencia (primera vez)
+─────────────────────────────────────────────────────────────────────────
+
+  Abrir PowerShell o CMD y ejecutar:
+
+    pip install paramiko
+
+  Si usa pip3:
+    pip3 install paramiko
+
+  Confirmar instalación:
+    python -c "import paramiko; print('OK')"
+
+
+PASO 2: Preparar archivos locales
+─────────────────────────────────────────────────────────────────────────
+
+  Asegurar que todos los archivos *.sql están en:
+    c:\Users\ferch\Documents\WS_Novacomp_Taller_IA_1\TallerGitHub\tablas_individuales\
+
+  Archivos esperados: 114 archivos *.sql (ACMST.sql, APCLS.sql, etc.)
+
+
+PASO 3: Ejecutar el programa
+─────────────────────────────────────────────────────────────────────────
+
+  En PowerShell, navegue a la carpeta y ejecute:
+
+    python pub400_manager.py
+
+  El programa mostrará:
+
+    ╔═══════════════════════════════════════════════════════╗
+    ║     GESTOR DE CARGA SQL A PUB400.COM QSQLSRC          ║
+    ╚═══════════════════════════════════════════════════════╝
+
+    OPCIONES:
+      1. Solo subir archivos SQL
+      2. Crear miembros en QSQLSRC
+      3. Subir archivos Y crear miembros (completo)
+
+    Seleccionar opción (1-3): 
+
+
+PASO 4: Seleccionar opción
+─────────────────────────────────────────────────────────────────────────
+
+  Opción RECOMENDADA: 3 (hace todo)
+
+    Seleccionar opción (1-3): 3
+
+    Usuario PUB400.COM: FGUTIERRM1
+    Contraseña: ••••••••••
+    Ruta remota (default: /home/FGUTIERRM1/qsqlsrc): 
+
+
+PASO 5: Confirmar entrada
+─────────────────────────────────────────────────────────────────────────
+
+  El programa mostrará:
+
+    Ruta local: c:\Users\ferch\...
+    Ruta remota: /home/FGUTIERRM1/qsqlsrc
+
+    PASO 1: SUBIENDO ARCHIVOS SQL
+    ============================================================
+    Subiendo 114 archivos...
+
+      ✓ ACMST.sql
+      ✓ APCLS.sql
+      ✓ APPRV.sql
+      ...
+      ✓ UT510.sql
+
+    ============================================================
+    Archivos subidos exitosamente: 114
+    Errores: 0
+    ============================================================
+
+    PASO 2: CREANDO MIEMBROS EN QSQLSRC
+    ============================================================
+    Creando 114 miembros en QSQLSRC...
+
+      ✓ ACMST     | Archivo Maestro de Cuentas de Detalle
+      ✓ APCLS     | Aplicación de Clases
+      ...
+      ✓ UT510     | Utilidades 5.10
+
+    ============================================================
+    Miembros creados exitosamente: 114
+    Errores: 0
+    ============================================================
+
+    ✓ PROCESO COMPLETADO
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                      OPCIÓN 2: MÉTODO SEMI-MANUAL                     ║
+║            Usar archivos pre-generados en PUB400.COM                  ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+Si desea no usar Python, use los archivos pre-generados:
+
+1. Subir manualmente los 114 archivos .sql a PUB400.COM:
+   
+   Ruta: /home/[usuario]/qsqlsrc/
+   
+   Método: FTP, SFTP, SCP, o cualquier herramienta disponible
+
+2. Usar el archivo: carga_qsqlsrc.txt
+
+   Este archivo contiene todos los comandos ADDMBR listos:
+
+     ADDMBR MBR(ACMST) FILE(FGUTIERRM1/QSQLSRC) SRCTYPE(SQL) +
+            TEXT('Archivo Maestro de Cuentas de Detalle')
+     ADDMBR MBR(APCLS) FILE(FGUTIERRM1/QSQLSRC) SRCTYPE(SQL) +
+            TEXT('Aplicación de Clases')
+     ... (114 comandos totales)
+
+3. Copiar y pegar en IBM i (QPAD, SEU, o línea de comandos)
+
+4. Ejecutar los comandos ADDMBR
+
+5. Copiar contenido de archivos a miembros con:
+   CPYFRM FROMFILE('/home/usuario/archivo.sql') +
+          TOFILE(FGUTIERRM1/QSQLSRC) TOMBRNAME(MIEMBRO)
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                      OPCIÓN 3: MÉTODO IBM i NATIVO                    ║
+║            Compilar y ejecutar CARGQSQL.CLLE en PUB400.COM            ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+PASOS
+──────────────────────────────────────────────────────────────────────────
+
+1. Transferir archivo CARGQSQL.CLLE a QSQLSRC en PUB400.COM
+   
+   Crear miembro:
+     ADDMBR MBR(CARGQSQL) FILE(FGUTIERRM1/QSQLSRC) SRCTYPE(CLP)
+
+   Copiar contenido del archivo CARGQSQL.CLLE
+
+
+2. Compilar el programa
+
+   CRTBNDCL PGM(CARGQSQL) SRCFILE(FGUTIERRM1/QSQLSRC)
+
+
+3. Ejecutar el programa
+
+   CALL CARGQSQL PARM('/home/FGUTIERRM1/qsqlsrc' 'FGUTIERRM1' 'QSQLSRC')
+
+
+4. Verificar resultados en el historial de mensajes (DSPMSG)
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                   INFORMACIÓN DE MIEMBROS CREADOS                     ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+Total de miembros: 114
+Ubicación: FGUTIERRM1/QSQLSRC
+Tipo: SQL (SRCTYPE)
+Descripciones truncadas: Primeras 50 caracteres de línea 3
+
+MIEMBROS CON DESCRIPCIÓN TRUNCADA (>50 caracteres):
+──────────────────────────────────────────────────────────────────────────
+
+  5 miembros tuvieron descripciones > 50 caracteres y fueron truncados:
+
+  1. CNOFT    (55 → 50): "Control de Número de Folio de Facturas de lo"
+  2. DPMST    (51 → 50): "Depósitos Maestros para Diferentes Tipos de "
+  3. IFMST    (51 → 50): "Interfaz de Archivo Maestro de Configuraciónen"
+  4. MLNCT    (59 → 50): "Múltiples Líneas de Crédito para Operaciones "
+  5. MLNOT    (60 → 50): "Múltiples Líneas Notas de Operación Comercia"
+
+Consultar: miembros_qsqlsrc_truncados.csv
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                        SOLUCIÓN DE PROBLEMAS                          ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+PROBLEMA: "ModuleNotFoundError: No module named 'paramiko'"
+────────────────────────────────────────────────────────────────────────
+SOLUCIÓN: Instalar paramiko
+  pip install paramiko
+
+
+PROBLEMA: "Authentication failed"
+────────────────────────────────────────────────────────────────────────
+SOLUCIÓN: Verificar credenciales
+  ✓ Usuario correcto (generalmente en mayúsculas)
+  ✓ Contraseña correcta
+  ✓ SFTP/SSH habilitado en PUB400.COM
+
+
+PROBLEMA: "Connection refused"
+────────────────────────────────────────────────────────────────────────
+SOLUCIÓN: Verificar conexión a PUB400.COM
+  ✓ Conectado a internet
+  ✓ Host correcto: pub400.com
+  ✓ Puerto SSH: 22 (automático)
+
+
+PROBLEMA: "Permission denied" durante carga
+────────────────────────────────────────────────────────────────────────
+SOLUCIÓN: Verificar permisos en PUB400.COM
+  ✓ Crear directorio /home/usuario/qsqlsrc con permiso 755
+
+
+PROBLEMA: "Already a member" al crear ADDMBR
+────────────────────────────────────────────────────────────────────────
+SOLUCIÓN: Limpiar miembros antiguos
+  CLRPFM FILE(FGUTIERRM1/QSQLSRC)
+  o eliminar miembros específicos
+  DLTMBR FILE(FGUTIERRM1/QSQLSRC) MBR(MEMBERNAME)
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                          NOTAS IMPORTANTES                            ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+✓ Todos los archivos SQL ya están procesados con líneas ≤80 caracteres
+
+✓ Las descripciones se extraen de la línea 3 de cada archivo SQL
+
+✓ Si la línea 3 no contiene descripción, se usa "Tabla SQL" como default
+
+✓ Los nombres de miembros se derivan del nombre del archivo (sin .sql)
+
+✓ Máximo nombre de miembro: 10 caracteres (IBM i QSQLSRC standard)
+
+✓ Máximo descripción: 50 caracteres (IBM i TEXT field limit)
+
+✓ El encoding de todos los archivos es UTF-8
+
+✓ Estructura esperada:
+  Línea 1: Comentario (SQL CREATE TABLE o similar)
+  Línea 2: Clave primaria o comentario adicional
+  Línea 3: "Descripción: [texto de hasta 50 caracteres]"
+  Línea 4+: Definición de columnas
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                        CONTACTO Y SOPORTE                             ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+Si encuentra problemas:
+
+1. Verificar el archivo: miembros_qsqlsrc_truncados.csv
+   Contiene lista de todos los 114 miembros con descripciones
+
+2. Revisar el archivo: INSTRUCCIONES_CARGA_PUB400.txt
+   Contiene opciones alternativas de carga
+
+3. Consultar documentación de IBM i:
+   ✓ ADDMBR (Add Member to Source File)
+   ✓ CPYFRM (Copy From)
+   ✓ QSHEXEC (QShell Execution)
+
+
+═══════════════════════════════════════════════════════════════════════════
+FIN DE LA GUÍA
+═══════════════════════════════════════════════════════════════════════════

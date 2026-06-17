@@ -13,7 +13,8 @@
 -- Proyecto: Taller GitHub - IBM i
 -- =====================================================================
 
-CREATE OR REPLACE TABLE FGUTIERRM1.Maestros_de_Centros_de_Costos FOR SYSTEM NAME CCDSC
+CREATE OR REPLACE TABLE FGUTIERRM1.Maestros_de_Centros_de_Costos FOR
+SYSTEM NAME CCDSC
 (
     id_registro                    FOR COLUMN IDREG    BIGINT NOT NULL,
     descripcion                    FOR COLUMN DESC     VARCHAR(120),
@@ -29,43 +30,66 @@ CREATE OR REPLACE TABLE FGUTIERRM1.Maestros_de_Centros_de_Costos FOR SYSTEM NAME
 )
 RCDFMT CCDSCREC;
 
-COMMENT ON TABLE FGUTIERRM1.Maestros_de_Centros_de_Costos IS 'Maestros de Centros de Costos';
+COMMENT ON TABLE FGUTIERRM1.Maestros_de_Centros_de_Costos IS 'Maestros de
+Centros de Costos';
 
 LABEL ON TABLE FGUTIERRM1.Maestros_de_Centros_de_Costos IS 'CCDSC';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.id_registro IS 'Identificador del registro';
+COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.id_registro IS
+'Identificador del registro';
 LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.id_registro IS 'IDREG';
-LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.id_registro TEXT IS 'Identificador del registro';
+LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.id_registro TEXT IS
+'Identificador del registro';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.descripcion IS 'Descripcion';
+COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.descripcion IS
+'Descripcion';
 LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.descripcion IS 'DESC';
-LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.descripcion TEXT IS 'Descripcion';
+LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.descripcion TEXT IS
+'Descripcion';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.usuario_creacion IS 'Usuario creacion';
-LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.usuario_creacion IS 'USCRE';
-LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.usuario_creacion TEXT IS 'Usuario creacion';
+COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.usuario_creacion IS
+'Usuario creacion';
+LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.usuario_creacion IS
+'USCRE';
+LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.usuario_creacion TEXT
+IS 'Usuario creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.usuario_actualizacion IS 'Usuario actualizacion';
-LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.usuario_actualizacion IS 'USACT';
-LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.usuario_actualizacion TEXT IS 'Usuario actualizacion';
+COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.usuario_actualizacion
+IS 'Usuario actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.usuario_actualizacion
+IS 'USACT';
+LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.usuario_actualizacion
+TEXT IS 'Usuario actualizacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.version_registro IS 'Version';
-LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.version_registro IS 'VRSRG';
-LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.version_registro TEXT IS 'Version';
+COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.version_registro IS
+'Version';
+LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.version_registro IS
+'VRSRG';
+LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.version_registro TEXT
+IS 'Version';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.observaciones IS 'Observaciones';
-LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.observaciones IS 'OBSRV';
-LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.observaciones TEXT IS 'Observaciones';
+COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.observaciones IS
+'Observaciones';
+LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.observaciones IS
+'OBSRV';
+LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.observaciones TEXT IS
+'Observaciones';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.estado_registro IS 'Estado';
-LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.estado_registro IS 'ESTDO';
-LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.estado_registro TEXT IS 'Estado';
+COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.estado_registro IS
+'Estado';
+LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.estado_registro IS
+'ESTDO';
+LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.estado_registro TEXT IS
+'Estado';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.created_at IS 'Fecha creacion';
+COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.created_at IS 'Fecha
+creacion';
 LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.created_at IS 'CRTM';
-LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.created_at TEXT IS 'Fecha creacion';
+LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.created_at TEXT IS
+'Fecha creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.updated_at IS 'Fecha actualizacion';
+COMMENT ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.updated_at IS 'Fecha
+actualizacion';
 LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.updated_at IS 'UPDTM';
-LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.updated_at TEXT IS 'Fecha actualizacion';
-
+LABEL ON COLUMN FGUTIERRM1.Maestros_de_Centros_de_Costos.updated_at TEXT IS
+'Fecha actualizacion';

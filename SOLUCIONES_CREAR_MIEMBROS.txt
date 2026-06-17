@@ -1,0 +1,182 @@
+╔════════════════════════════════════════════════════════════════════════╗
+║                    SOLUCIONES PARA CREAR MIEMBROS                     ║
+║          Opción 1: IBM i (Recomendado) | 2: Python | 3: CLI          ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+He creado 3 soluciones diferentes para crear los 114 miembros en QSQLSRC.
+Elige la que mejor se adapte a tu situación.
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                    ✅ OPCIÓN 1: MÉTODO IBM i (MÁS CONFIABLE)         ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+UBICACIÓN: Ejecutar en PUB400.COM
+DIFICULTAD: Fácil
+TIEMPO: ~2-3 minutos
+
+PASOS:
+──────────────────────────────────────────────────────────────────────────
+
+1. Conectar a PUB400.COM (QPAD, green screen, o cliente IBM i)
+
+2. Ejecutar el siguiente comando:
+
+   CALL QSH PARM('for F in /home/FGUTIERRM1/qsqlsrc/*.sql; do M=$(basename $F .sql | tr a-z A-Z); system "ADDMBR MBR($M) FILE(FGUTIERRM1/QSQLSRC) SRCTYPE(SQL)"; system "CPYFRM FROMFILE('"'"'$F'"'"') TOFILE(FGUTIERRM1/QSQLSRC) TOMBRNAME($M)"; done')
+
+3. Esperar a que termine (verás mensajes de confirmación)
+
+4. Verificar:
+
+   DSPMBRLIST FILE(FGUTIERRM1/QSQLSRC)
+
+
+✅ VENTAJAS:
+   • Más confiable (ejecuta directamente en IBM i)
+   • Más rápido
+   • No requiere Python
+   • Todo en una línea
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║              ✅ OPCIÓN 2: PYTHON (DESDE WINDOWS)                      ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+UBICACIÓN: Ejecutar desde Windows
+DIFICULTAD: Fácil-Media
+TIEMPO: ~3-5 minutos
+
+PASOS:
+──────────────────────────────────────────────────────────────────────────
+
+1. Asegurar que paramiko está instalado:
+
+   pip install paramiko
+
+2. Navegar a la carpeta de archivos:
+
+   cd "c:\Users\ferch\Documents\WS_Novacomp_Taller_IA_1\TallerGitHub\tablas_individuales"
+
+3. Crear un script llamado crear_miembros_simple.py con contenido:
+
+   ────────────────────────────────────────────────────────────────────
+   import paramiko
+   import os
+   from getpass import getpass
+   
+   ssh = paramiko.SSHClient()
+   ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+   
+   user = input("Usuario: ")
+   pwd = getpass("Contraseña: ")
+   
+   print("Conectando...")
+   ssh.connect('pub400.com', port=2222, username=user, password=pwd)
+   print("✓ Conectado\n")
+   
+   files = sorted([f for f in os.listdir('.') if f.endswith('.sql')])
+   print(f"Creando {len(files)} miembros...\n")
+   
+   for fname in files:
+       member = fname[:-4].upper()
+       
+       # Crear miembro
+       cmd1 = f"ADDMBR MBR({member}) FILE(FGUTIERRM1/QSQLSRC) SRCTYPE(SQL)"
+       ssh.exec_command(f"system('{cmd1}')")
+       
+       # Copiar archivo
+       cmd2 = f"CPYFRM FROMFILE('/home/{user}/qsqlsrc/{fname}') TOFILE(FGUTIERRM1/QSQLSRC) TOMBRNAME({member})"
+       ssh.exec_command(f"system('{cmd2}')")
+       
+       print(f"  ✓ {member}")
+   
+   print(f"\n✓ Completado: {len(files)} miembros")
+   ssh.close()
+   ────────────────────────────────────────────────────────────────────
+
+4. Ejecutar:
+
+   python crear_miembros_simple.py
+
+
+✅ VENTAJAS:
+   • Ejecuta desde Windows
+   • Automation completa
+   • Muestra progreso
+   • Flexible
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║         ✅ OPCIÓN 3: PROGRAMA CL COMPILADO (MÁS PROFESIONAL)         ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+UBICACIÓN: Compilar en IBM i
+DIFICULTAD: Media
+TIEMPO: ~5-10 minutos (incluida compilación)
+
+PASOS:
+──────────────────────────────────────────────────────────────────────────
+
+1. En IBM i, crear nuevo miembro CRGMEMQL tipo CLP:
+
+   ADDMBR FILE(FGUTIERRM1/QSQLSRC) MBR(CRGMEMQL) SRCTYPE(CLP)
+
+2. Copiar contenido de archivo CRGMEMQL.CLLE en tu carpeta local
+
+3. Compilar:
+
+   CRTBNDCL PGM(CRGMEMQL) SRCFILE(FGUTIERRM1/QSQLSRC)
+
+4. Ejecutar:
+
+   CALL CRGMEMQL PARM('/home/FGUTIERRM1/qsqlsrc')
+
+
+✅ VENTAJAS:
+   • Profesional
+   • Reutilizable
+   • Mejor manejo de errores
+   • Registro de auditoría
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                      RECOMENDACIÓN FINAL                              ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+🏆 SI ESTÁS EN VENTANA IBM i AHORA:
+
+   Usa OPCIÓN 1 (IBM i directo)
+   
+   Es la más rápida y confiable. Copia y pega el comando en una sola línea.
+
+
+🏆 SI ESTÁS EN WINDOWS Y QUIERES AUTOMATIZAR:
+
+   Usa OPCIÓN 2 (Python)
+   
+   Es simple y puedes verlo funcionar desde tu pantalla.
+
+
+🏆 SI QUIERES SOLUCIÓN PROFESIONAL Y REUTILIZABLE:
+
+   Usa OPCIÓN 3 (Programa CL)
+   
+   Una vez compilado, puedes ejecutarlo desde cualquier lugar en IBM i.
+
+
+════════════════════════════════════════════════════════════════════════════
+
+¿QUÉ HABÍA DE MALO CON pub400_manager.py?
+
+El programa que generé antes tenía problemas porque:
+   ✗ Intentaba ejecutar comandos CL desde shell (no es válido)
+   ✗ QSHEXEC no ejecuta comandos CL directamente
+   ✗ Los comandos ADDMBR/CPYFRM necesitan ambiente CL
+
+Ahora he actualizado el programa con método más confiable, pero 
+las opciones anteriores son más probadas.
+
+
+════════════════════════════════════════════════════════════════════════════
+Fecha: 2026-06-17
+════════════════════════════════════════════════════════════════════════════

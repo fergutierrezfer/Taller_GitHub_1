@@ -1,0 +1,118 @@
+/*====================================================================*/
+/* PROGRAMA: CPIMSQL                                                  */
+/* FUNCIÓN: Copiar archivos .sql como miembros en QSQLSRC            */
+/* PARÁMETROS:                                                        */
+/*   &SRCDIR  = Directorio IFS (/home/FGUTIERRM/qsqlsrc)            */
+/*   &LIBNAME = Librería (FGUTIERRM1)                               */
+/*   &SRCFILE = Archivo fuente (QSQLSRC)                            */
+/* COMPILAR: CRTBNDCL PGM(CPIMSQL) SRCFILE(FGUTIERRM1/QSQLSRC)      */
+/* EJECUTAR: CALL CPIMSQL PARM('/home/FGUTIERRM/qsqlsrc')           */
+/*====================================================================*/
+
+             PGM        PARM(&SRCDIR &LIBNAME &SRCFILE)
+
+/*-- Declaraciones de variables --*/
+             DCL        VAR(&SRCDIR) TYPE(*CHAR) LEN(256)
+             DCL        VAR(&LIBNAME) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&SRCFILE) TYPE(*CHAR) LEN(10)
+
+             DCL        VAR(&MEMBER) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&DESC) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&FILEPATH) TYPE(*CHAR) LEN(512)
+             DCL        VAR(&FILENAME) TYPE(*CHAR) LEN(256)
+             DCL        VAR(&CMDSTR) TYPE(*CHAR) LEN(1024)
+             DCL        VAR(&LISTFILE) TYPE(*CHAR) LEN(256)
+             
+             DCL        VAR(&SUCCESS) TYPE(*DEC) LEN(5 0) VALUE(0)
+             DCL        VAR(&ERRORS) TYPE(*DEC) LEN(5 0) VALUE(0)
+             DCL        VAR(&COUNT) TYPE(*DEC) LEN(5 0) VALUE(0)
+             DCL        VAR(&MSGTEXT) TYPE(*CHAR) LEN(256)
+
+/*-- Valores por defecto --*/
+             IF         COND(&SRCDIR = '') THEN(
+                CHGVAR     VAR(&SRCDIR) VALUE('/home/FGUTIERRM/qsqlsrc')
+             )
+             IF         COND(&LIBNAME = '') THEN(
+                CHGVAR     VAR(&LIBNAME) VALUE('FGUTIERRM1')
+             )
+             IF         COND(&SRCFILE = '') THEN(
+                CHGVAR     VAR(&SRCFILE) VALUE('QSQLSRC')
+             )
+
+/*-- Mostrar encabezado --*/
+             SNDPGMMSG  MSG('╔════════════════════════════════════════════════════╗')
+             SNDPGMMSG  MSG('║  COPIAR ARCHIVOS SQL COMO MIEMBROS EN QSQLSRC     ║')
+             SNDPGMMSG  MSG('╚════════════════════════════════════════════════════╝')
+             
+             CHGVAR     VAR(&MSGTEXT) VALUE('Directorio origen: ' *CAT +
+                          &SRCDIR)
+             SNDPGMMSG  MSG(&MSGTEXT)
+             
+             CHGVAR     VAR(&MSGTEXT) VALUE('Destino: ' *CAT &LIBNAME +
+                          '/' *CAT &SRCFILE)
+             SNDPGMMSG  MSG(&MSGTEXT)
+             SNDPGMMSG  MSG(' ')
+
+/*-- Crear archivo temporal para lista de archivos --*/
+             CHGVAR     VAR(&LISTFILE) VALUE('/tmp/sqllist_' *CAT +
+                          %CHAR(%TIMESTAMP()))
+             
+             SNDPGMMSG  MSG('Buscando archivos .sql...')
+
+/*-- Usar QSHEXEC para listar archivos y procesarlos --*/
+/*-- Script de shell que hace todo --*/
+             CHGVAR     VAR(&CMDSTR) VALUE(
+'
+cd ' *CAT &SRCDIR *CAT '
+find . -maxdepth 1 -name "*.sql" -type f | sort | while read FILE; do
+  FNAME=$(basename "$FILE")
+  MEMBER=$(basename "$FILE" .sql | tr "[:lower:]" "[:upper:]")
+  
+  # Leer línea 3
+  DESC=$(sed -n "3p" "$FILE" 2>/dev/null | sed "s/^[[:space:]]*--[[:space:]]*//;s/^Descripción[[:space:]]*:[[:space:]]*//;s/^Descripcion[[:space:]]*:[[:space:]]*//;s/^[[:space:]]*//;" | cut -c1-50)
+  
+  if [ -z "$DESC" ]; then
+    DESC="Tabla SQL"
+  fi
+  
+  # Escapar comillas
+  DESC=$(echo "$DESC" | sed "s/'/''/g")
+  
+  # Crear miembro
+  echo "ADDMBR MBR($MEMBER) FILE(' *CAT &LIBNAME *CAT '/' *CAT &SRCFILE *CAT ') SRCTYPE(SQL) TEXT('"'"'$DESC'"'"')" | QSHEXEC
+  
+  # Copiar archivo
+  echo "CPYFRM FROMFILE('"'"'$FILE'"'"') TOFILE(' *CAT &LIBNAME *CAT '/' *CAT &SRCFILE *CAT ') TOMBRNAME($MEMBER)" | QSHEXEC
+  
+  echo "$MEMBER"
+done > ' *CAT &LISTFILE
+             )
+
+/*-- Ejecutar el script --*/
+             CALL       PGM(QSHEXEC) PARM(&CMDSTR)
+
+/*-- Leer resultados --*/
+             SNDPGMMSG  MSG('Procesando resultados...')
+
+/*-- Monitorear por errores --*/
+             MONMSG     MSGID(CPF0000) EXEC(DO)
+                CHGVAR     VAR(&ERRORS) VALUE(&ERRORS + 1)
+             ENDDO
+
+/*-- Mostrar resumen --*/
+             SNDPGMMSG  MSG(' ')
+             SNDPGMMSG  MSG('╔════════════════════════════════════════════════════╗')
+             SNDPGMMSG  MSG('║ Proceso completado                                 ║')
+             SNDPGMMSG  MSG('╚════════════════════════════════════════════════════╝')
+             
+             CHGVAR     VAR(&MSGTEXT) VALUE('Ejecutado')
+             SNDPGMMSG  MSG(&MSGTEXT)
+             
+             SNDPGMMSG  MSG(' ')
+             SNDPGMMSG  MSG('Para verificar: DSPMBRLIST FILE(' *CAT +
+                          &LIBNAME *CAT '/' *CAT &SRCFILE *CAT ')')
+
+/*-- Limpiar archivo temporal --*/
+             CALL       PGM(QSHEXEC) PARM('rm -f ' *CAT &LISTFILE)
+
+             ENDPGM

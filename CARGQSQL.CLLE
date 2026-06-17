@@ -1,0 +1,106 @@
+/*========================================================================*/
+/* PROGRAMA CL PARA CARGAR ARCHIVOS SQL Y CREAR MIEMBROS EN QSQLSRC     */
+/* Nombre: CARGQSQL                                                     */
+/* Tipo: CLLE (Command Language, Extended)                              */
+/* Ubicación: Compilar en PUB400.COM IBM i                              */
+/*========================================================================*/
+
+             PGM        PARM(&SRCPATH &LIBNAME &SRCFILE)
+
+             DCL        VAR(&SRCPATH) TYPE(*CHAR) LEN(256) +
+                          VALUE('/home')
+             DCL        VAR(&LIBNAME) TYPE(*CHAR) LEN(10) +
+                          VALUE('FGUTIERRM1')
+             DCL        VAR(&SRCFILE) TYPE(*CHAR) LEN(10) +
+                          VALUE('QSQLSRC')
+             DCL        VAR(&SRCTYPE) TYPE(*CHAR) LEN(10) +
+                          VALUE('SQL')
+             DCL        VAR(&MEMBER) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&DESC) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&FILEPATH) TYPE(*CHAR) LEN(256)
+             DCL        VAR(&FILENAME) TYPE(*CHAR) LEN(256)
+             DCL        VAR(&COUNT) TYPE(*DEC) LEN(5 0) VALUE(0)
+             DCL        VAR(&SUCCESS) TYPE(*DEC) LEN(5 0) VALUE(0)
+             DCL        VAR(&ERRORS) TYPE(*DEC) LEN(5 0) VALUE(0)
+             DCL        VAR(&CMDSTR) TYPE(*CHAR) LEN(1024)
+             DCL        VAR(&TMPFILE) TYPE(*CHAR) LEN(50)
+             
+             SNDPGMMSG  MSG('Iniciando carga de archivos SQL desde: ' +
+                          *CAT &SRCPATH)
+             SNDPGMMSG  MSG('Destino: ' *CAT &LIBNAME *CAT '/' *CAT +
+                          &SRCFILE)
+             
+/* Crear archivo temporal para lista de archivos */
+             CRTTMPF    FILE(QTEMP/SQLFILES) RCDLEN(256) +
+                          TEXT('Archivos SQL a procesar')
+             
+             MONMSG     MSGID(CPF2714) EXEC(CLRPFM +
+                          FILE(QTEMP/SQLFILES))
+             
+/* Obtener lista de archivos .sql */
+             CALL       PGM(QSHEXEC) PARM('find ' *CAT &SRCPATH +
+                          ' -name "*.sql" -type f | sort')
+             
+             SNDPGMMSG  MSG('Archivo temporal creado')
+
+/* Procesar cada archivo encontrado */
+             OPNQRYF    FILE((QTEMP/SQLFILES)) +
+                          KEYFLD((FILENAME)) +
+                          OPNSCOPE(*JOB)
+             
+             DOWHILE    .TRUE.
+                READF      QTEMP/SQLFILES
+                IF         COND(&SQLSTATE = '02000') THEN(LEAVE)
+                
+                CHGVAR     VAR(&COUNT) VALUE(&COUNT + 1)
+                
+/* Extraer nombre del archivo sin extensión */
+                CHGVAR     VAR(&MEMBER) VALUE(%SUBSTRING(&FILENAME +
+                             1 %FIND('.' &FILENAME) - 1))
+                CHGVAR     VAR(&MEMBER) VALUE(%UPPER(&MEMBER))
+                
+/* Truncar a 10 caracteres para nombre de miembro */
+                IF         COND(%LEN(&MEMBER) > 10) THEN(
+                   CHGVAR     VAR(&MEMBER) VALUE(%SUBSTRING(&MEMBER +
+                                1 10))
+                )
+                
+/* Descripción temporal (será mejorada después) */
+                CHGVAR     VAR(&DESC) VALUE('Tabla SQL')
+                
+/* Crear miembro en QSQLSRC */
+                ADDMBR     FILE(&LIBNAME/&SRCFILE) +
+                             MBR(&MEMBER) +
+                             SRCTYPE(&SRCTYPE) +
+                             TEXT(&DESC)
+                
+                IF         COND(&SQLSTATE = *BLANK) THEN(
+                   CHGVAR     VAR(&SUCCESS) VALUE(&SUCCESS + 1)
+                   SNDPGMMSG  MSG('Miembro ' *CAT &MEMBER +
+                                ' creado exitosamente')
+                ) ELSE (
+                   CHGVAR     VAR(&ERRORS) VALUE(&ERRORS + 1)
+                   SNDPGMMSG  MSG('ERROR creando miembro ' *CAT +
+                                &MEMBER *CAT ': ' *CAT &SQLSTATE)
+                )
+                
+/* Copiar contenido del archivo al miembro */
+                CPYFRM     FROMFILE(&FILEPATH) +
+                             TOFILE(&LIBNAME/&SRCFILE) +
+                             TOMBRNAME(&MEMBER)
+                
+                MONMSG     MSGID(CPF2132) /* Ignorar si ya existe */
+                
+             ENDDO
+             
+             CLOF       OPNID(QTEMP/SQLFILES)
+             
+/* Mostrar resumen */
+             SNDPGMMSG  MSG('===========================================')
+             SNDPGMMSG  MSG('Procesamiento completado')
+             SNDPGMMSG  MSG('Total archivos encontrados: ' *CAT &COUNT)
+             SNDPGMMSG  MSG('Miembros creados: ' *CAT &SUCCESS)
+             SNDPGMMSG  MSG('Errores: ' *CAT &ERRORS)
+             SNDPGMMSG  MSG('===========================================')
+
+             ENDPGM

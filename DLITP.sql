@@ -13,7 +13,8 @@
 -- Proyecto: Taller GitHub - IBM i
 -- =====================================================================
 
-CREATE OR REPLACE TABLE FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos FOR SYSTEM NAME DLITP
+CREATE OR REPLACE TABLE FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos FOR
+SYSTEM NAME DLITP
 (
     id_registro                    FOR COLUMN IDREG    BIGINT NOT NULL,
     descripcion                    FOR COLUMN DESC     VARCHAR(120),
@@ -29,43 +30,73 @@ CREATE OR REPLACE TABLE FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos FOR SYSTE
 )
 RCDFMT DLITPREC;
 
-COMMENT ON TABLE FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos IS 'Maestro de Deducciones de Prestamos';
+COMMENT ON TABLE FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos IS 'Maestro de
+Deducciones de Prestamos';
 
 LABEL ON TABLE FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos IS 'DLITP';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.id_registro IS 'Identificador del registro';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.id_registro IS 'IDREG';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.id_registro TEXT IS 'Identificador del registro';
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.id_registro IS
+'Identificador del registro';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.id_registro IS
+'IDREG';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.id_registro TEXT
+IS 'Identificador del registro';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.descripcion IS 'Descripcion';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.descripcion IS 'DESC';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.descripcion TEXT IS 'Descripcion';
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.descripcion IS
+'Descripcion';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.descripcion IS
+'DESC';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.descripcion TEXT
+IS 'Descripcion';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.usuario_creacion IS 'Usuario creacion';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.usuario_creacion IS 'USCRE';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.usuario_creacion TEXT IS 'Usuario creacion';
+COMMENT ON COLUMN
+FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.usuario_creacion IS 'Usuario
+creacion';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.usuario_creacion
+IS 'USCRE';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.usuario_creacion
+TEXT IS 'Usuario creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.usuario_actualizacion IS 'Usuario actualizacion';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.usuario_actualizacion IS 'USACT';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.usuario_actualizacion TEXT IS 'Usuario actualizacion';
+COMMENT ON COLUMN
+FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.usuario_actualizacion IS 'Usuario
+actualizacion';
+LABEL ON COLUMN
+FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.usuario_actualizacion IS 'USACT';
+LABEL ON COLUMN
+FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.usuario_actualizacion TEXT IS
+'Usuario actualizacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.version_registro IS 'Version';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.version_registro IS 'VRSRG';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.version_registro TEXT IS 'Version';
+COMMENT ON COLUMN
+FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.version_registro IS 'Version';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.version_registro
+IS 'VRSRG';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.version_registro
+TEXT IS 'Version';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.observaciones IS 'Observaciones';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.observaciones IS 'OBSRV';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.observaciones TEXT IS 'Observaciones';
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.observaciones
+IS 'Observaciones';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.observaciones IS
+'OBSRV';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.observaciones
+TEXT IS 'Observaciones';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.estado_registro IS 'Estado';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.estado_registro IS 'ESTDO';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.estado_registro TEXT IS 'Estado';
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.estado_registro
+IS 'Estado';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.estado_registro
+IS 'ESTDO';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.estado_registro
+TEXT IS 'Estado';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.created_at IS 'Fecha creacion';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.created_at IS 'CRTM';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.created_at TEXT IS 'Fecha creacion';
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.created_at IS
+'Fecha creacion';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.created_at IS
+'CRTM';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.created_at TEXT
+IS 'Fecha creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.updated_at IS 'Fecha actualizacion';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.updated_at IS 'UPDTM';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.updated_at TEXT IS 'Fecha actualizacion';
-
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.updated_at IS
+'Fecha actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.updated_at IS
+'UPDTM';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Deducciones_de_Prestamos.updated_at TEXT
+IS 'Fecha actualizacion';

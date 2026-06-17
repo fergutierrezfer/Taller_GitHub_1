@@ -1,0 +1,45 @@
+#!/bin/sh
+# Script para actualizar el TEXT de los miembros en FGUTIERRM1/QSQLSRC
+# Lee cada miembro, extrae la descripción del header y actualiza sus metadatos
+
+set -e
+
+FILE="/QSYS.LIB/FGUTIERRM1.LIB/QSQLSRC.FILE"
+
+if [ ! -d "$FILE" ]; then
+  echo "Archivo fuente no encontrado: $FILE" >&2
+  exit 1
+fi
+
+for mbr_path in "$FILE"/*.MBR; do
+  [ -e "$mbr_path" ] || continue
+
+  member=$(basename "$mbr_path" .MBR)
+
+  # Extrae la línea de descripción del miembro (busca "Descripción:" o "DESCRIPCIÓN:")
+  desc=$(sed -n 's/^--[[:space:]]*[Dd]escripci[óo]n:[[:space:]]*//p' "$mbr_path" | head -1)
+  
+  # Si no encuentra "Descripción:", busca "Objetivo:"
+  if [ -z "$desc" ]; then
+    desc=$(sed -n 's/^--[[:space:]]*Objetivo:[[:space:]]*//p' "$mbr_path" | head -1)
+  fi
+  
+  # Si aun no hay descripción, usa el nombre del miembro
+  if [ -z "$desc" ]; then
+    desc="$member"
+  fi
+
+  # Limita la descripción a 50 caracteres
+  desc=$(printf '%s' "$desc" | cut -c1-50)
+
+  # Escapa comillas simples (') para IBM i
+  desc=$(printf '%s' "$desc" | sed "s/'/''/g")
+
+  echo "Actualizando $member: $desc"
+
+  # Actualiza el TEXT del miembro
+  system "CHGPFM FILE(FGUTIERRM1/QSQLSRC) MBR(${member}) SRCTYPE(SQL) TEXT('${desc}')"
+
+done
+
+echo "Proceso de actualización finalizado."

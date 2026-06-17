@@ -13,7 +13,9 @@
 -- Proyecto: Taller GitHub - IBM i
 -- =====================================================================
 
-CREATE OR REPLACE TABLE FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas FOR SYSTEM NAME CNTRLRCO
+CREATE OR REPLACE TABLE
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas FOR SYSTEM NAME
+CNTRLRCO
 (
     id_registro                    FOR COLUMN IDREG    BIGINT NOT NULL,
     descripcion                    FOR COLUMN DESC     VARCHAR(120),
@@ -29,43 +31,97 @@ CREATE OR REPLACE TABLE FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranz
 )
 RCDFMT CNTRLRCOREC;
 
-COMMENT ON TABLE FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas IS 'Tabla de Cargos por Servicios Tarifas Cobranzas';
+COMMENT ON TABLE FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas IS
+'Tabla de Cargos por Servicios Tarifas Cobranzas';
 
-LABEL ON TABLE FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas IS 'CNTRLRCO';
+LABEL ON TABLE FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas IS
+'CNTRLRCO';
 
-COMMENT ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.id_registro IS 'Identificador del registro';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.id_registro IS 'IDREG';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.id_registro TEXT IS 'Identificador del registro';
+COMMENT ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.id_registro IS
+'Identificador del registro';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.id_registro IS
+'IDREG';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.id_registro TEXT IS
+'Identificador del registro';
 
-COMMENT ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.descripcion IS 'Descripcion';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.descripcion IS 'DESC';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.descripcion TEXT IS 'Descripcion';
+COMMENT ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.descripcion IS
+'Descripcion';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.descripcion IS
+'DESC';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.descripcion TEXT IS
+'Descripcion';
 
-COMMENT ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.usuario_creacion IS 'Usuario creacion';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.usuario_creacion IS 'USCRE';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.usuario_creacion TEXT IS 'Usuario creacion';
+COMMENT ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.usuario_creacion IS
+'Usuario creacion';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.usuario_creacion IS
+'USCRE';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.usuario_creacion TEXT
+IS 'Usuario creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.usuario_actualizacion IS 'Usuario actualizacion';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.usuario_actualizacion IS 'USACT';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.usuario_actualizacion TEXT IS 'Usuario actualizacion';
+COMMENT ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.usuario_actualizacion
+IS 'Usuario actualizacion';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.usuario_actualizacion
+IS 'USACT';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.usuario_actualizacion
+TEXT IS 'Usuario actualizacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.version_registro IS 'Version';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.version_registro IS 'VRSRG';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.version_registro TEXT IS 'Version';
+COMMENT ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.version_registro IS
+'Version';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.version_registro IS
+'VRSRG';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.version_registro TEXT
+IS 'Version';
 
-COMMENT ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.observaciones IS 'Observaciones';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.observaciones IS 'OBSRV';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.observaciones TEXT IS 'Observaciones';
+COMMENT ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.observaciones IS
+'Observaciones';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.observaciones IS
+'OBSRV';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.observaciones TEXT IS
+'Observaciones';
 
-COMMENT ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.estado_registro IS 'Estado';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.estado_registro IS 'ESTDO';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.estado_registro TEXT IS 'Estado';
+COMMENT ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.estado_registro IS
+'Estado';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.estado_registro IS
+'ESTDO';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.estado_registro TEXT
+IS 'Estado';
 
-COMMENT ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.created_at IS 'Fecha creacion';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.created_at IS 'CRTM';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.created_at TEXT IS 'Fecha creacion';
+COMMENT ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.created_at IS 'Fecha
+creacion';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.created_at IS 'CRTM';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.created_at TEXT IS
+'Fecha creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.updated_at IS 'Fecha actualizacion';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.updated_at IS 'UPDTM';
-LABEL ON COLUMN FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.updated_at TEXT IS 'Fecha actualizacion';
-
+COMMENT ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.updated_at IS 'Fecha
+actualizacion';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.updated_at IS
+'UPDTM';
+LABEL ON COLUMN
+FGUTIERRM1.Tabla_de_Cargos_por_Servicios_Tarifas_Cobranzas.updated_at TEXT IS
+'Fecha actualizacion';
