@@ -13,8 +13,7 @@
 -- Proyecto: Taller GitHub - IBM i
 -- =====================================================================
 
-CREATE OR REPLACE TABLE FGUTIERRM1.Archivo_diario_de_Sobregiros FOR
-SYSTEM NAME OVDRF
+CREATE OR REPLACE TABLE FGUTIERRM1.Archivo_diario_de_Sobregiros FOR SYSTEM NAME OVDRF
 (
     id_registro                    FOR COLUMN IDREG    BIGINT NOT NULL,
     descripcion                    FOR COLUMN DESC     VARCHAR(120),
@@ -30,66 +29,43 @@ SYSTEM NAME OVDRF
 )
 RCDFMT OVDRFREC;
 
-COMMENT ON TABLE FGUTIERRM1.Archivo_diario_de_Sobregiros IS 'Archivo diario de
-Sobregiros';
+COMMENT ON TABLE FGUTIERRM1.Archivo_diario_de_Sobregiros IS 'Archivo diario de Sobregiros';
 
 LABEL ON TABLE FGUTIERRM1.Archivo_diario_de_Sobregiros IS 'OVDRF';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.id_registro IS
-'Identificador del registro';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.id_registro IS 'Identificador del registro';
 LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.id_registro IS 'IDREG';
-LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.id_registro TEXT IS
-'Identificador del registro';
+LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.id_registro TEXT IS 'Identificador del registro';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.descripcion IS
-'Descripcion';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.descripcion IS 'Descripcion';
 LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.descripcion IS 'DESC';
-LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.descripcion TEXT IS
-'Descripcion';
+LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.descripcion TEXT IS 'Descripcion';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.usuario_creacion IS
-'Usuario creacion';
-LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.usuario_creacion IS
-'USCRE';
-LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.usuario_creacion TEXT IS
-'Usuario creacion';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.usuario_creacion IS 'Usuario creacion';
+LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.usuario_creacion IS 'USCRE';
+LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.usuario_creacion TEXT IS 'Usuario creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.usuario_actualizacion
-IS 'Usuario actualizacion';
-LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.usuario_actualizacion IS
-'USACT';
-LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.usuario_actualizacion
-TEXT IS 'Usuario actualizacion';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.usuario_actualizacion IS 'Usuario actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.usuario_actualizacion IS 'USACT';
+LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.usuario_actualizacion TEXT IS 'Usuario actualizacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.version_registro IS
-'Version';
-LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.version_registro IS
-'VRSRG';
-LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.version_registro TEXT IS
-'Version';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.version_registro IS 'Version';
+LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.version_registro IS 'VRSRG';
+LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.version_registro TEXT IS 'Version';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.observaciones IS
-'Observaciones';
-LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.observaciones IS
-'OBSRV';
-LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.observaciones TEXT IS
-'Observaciones';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.observaciones IS 'Observaciones';
+LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.observaciones IS 'OBSRV';
+LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.observaciones TEXT IS 'Observaciones';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.estado_registro IS
-'Estado';
-LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.estado_registro IS
-'ESTDO';
-LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.estado_registro TEXT IS
-'Estado';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.estado_registro IS 'Estado';
+LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.estado_registro IS 'ESTDO';
+LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.estado_registro TEXT IS 'Estado';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.created_at IS 'Fecha
-creacion';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.created_at IS 'Fecha creacion';
 LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.created_at IS 'CRTM';
-LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.created_at TEXT IS
-'Fecha creacion';
+LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.created_at TEXT IS 'Fecha creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.updated_at IS 'Fecha
-actualizacion';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.updated_at IS 'Fecha actualizacion';
 LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.updated_at IS 'UPDTM';
-LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.updated_at TEXT IS
-'Fecha actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Archivo_diario_de_Sobregiros.updated_at TEXT IS 'Fecha actualizacion';
+

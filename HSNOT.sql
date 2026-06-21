@@ -13,8 +13,7 @@
 -- Proyecto: Taller GitHub - IBM i
 -- =====================================================================
 
-CREATE OR REPLACE TABLE FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones
-FOR SYSTEM NAME HSNOT
+CREATE OR REPLACE TABLE FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones FOR SYSTEM NAME HSNOT
 (
     id_registro                    FOR COLUMN IDREG    BIGINT NOT NULL,
     descripcion                    FOR COLUMN DESC     VARCHAR(120),
@@ -30,94 +29,43 @@ FOR SYSTEM NAME HSNOT
 )
 RCDFMT HSNOTREC;
 
-COMMENT ON TABLE FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones IS
-'Historico de Datos impresos en Notificaciones';
+COMMENT ON TABLE FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones IS 'Historico de Datos impresos en Notificaciones';
 
-LABEL ON TABLE FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones IS
-'HSNOT';
+LABEL ON TABLE FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones IS 'HSNOT';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.id_registro IS
-'Identificador del registro';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.id_registro IS 'IDREG';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.id_registro TEXT IS
-'Identificador del registro';
+COMMENT ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.id_registro IS 'Identificador del registro';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.id_registro IS 'IDREG';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.id_registro TEXT IS 'Identificador del registro';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.descripcion IS
-'Descripcion';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.descripcion IS 'DESC';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.descripcion TEXT IS
-'Descripcion';
+COMMENT ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.descripcion IS 'Descripcion';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.descripcion IS 'DESC';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.descripcion TEXT IS 'Descripcion';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.usuario_creacion IS
-'Usuario creacion';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.usuario_creacion IS
-'USCRE';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.usuario_creacion TEXT
-IS 'Usuario creacion';
+COMMENT ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.usuario_creacion IS 'Usuario creacion';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.usuario_creacion IS 'USCRE';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.usuario_creacion TEXT IS 'Usuario creacion';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.usuario_actualizacion
-IS 'Usuario actualizacion';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.usuario_actualizacion
-IS 'USACT';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.usuario_actualizacion
-TEXT IS 'Usuario actualizacion';
+COMMENT ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.usuario_actualizacion IS 'Usuario actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.usuario_actualizacion IS 'USACT';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.usuario_actualizacion TEXT IS 'Usuario actualizacion';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.version_registro IS
-'Version';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.version_registro IS
-'VRSRG';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.version_registro TEXT
-IS 'Version';
+COMMENT ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.version_registro IS 'Version';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.version_registro IS 'VRSRG';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.version_registro TEXT IS 'Version';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.observaciones IS
-'Observaciones';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.observaciones IS
-'OBSRV';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.observaciones TEXT IS
-'Observaciones';
+COMMENT ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.observaciones IS 'Observaciones';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.observaciones IS 'OBSRV';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.observaciones TEXT IS 'Observaciones';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.estado_registro IS
-'Estado';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.estado_registro IS
-'ESTDO';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.estado_registro TEXT IS
-'Estado';
+COMMENT ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.estado_registro IS 'Estado';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.estado_registro IS 'ESTDO';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.estado_registro TEXT IS 'Estado';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.created_at IS 'Fecha
-creacion';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.created_at IS 'CRTM';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.created_at TEXT IS
-'Fecha creacion';
+COMMENT ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.created_at IS 'Fecha creacion';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.created_at IS 'CRTM';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.created_at TEXT IS 'Fecha creacion';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.updated_at IS 'Fecha
-actualizacion';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.updated_at IS 'UPDTM';
-LABEL ON COLUMN
-FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.updated_at TEXT IS
-'Fecha actualizacion';
+COMMENT ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.updated_at IS 'Fecha actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.updated_at IS 'UPDTM';
+LABEL ON COLUMN FGUTIERRM1.Historico_de_Datos_impresos_en_Notificaciones.updated_at TEXT IS 'Fecha actualizacion';
+

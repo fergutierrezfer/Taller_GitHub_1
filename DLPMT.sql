@@ -33,27 +33,21 @@ COMMENT ON TABLE FGUTIERRM1.Plan_de_Pagos IS 'Plan de Pagos';
 
 LABEL ON TABLE FGUTIERRM1.Plan_de_Pagos IS 'DLPMT';
 
-COMMENT ON COLUMN FGUTIERRM1.Plan_de_Pagos.id_registro IS 'Identificador del
-registro';
+COMMENT ON COLUMN FGUTIERRM1.Plan_de_Pagos.id_registro IS 'Identificador del registro';
 LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.id_registro IS 'IDREG';
-LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.id_registro TEXT IS 'Identificador del
-registro';
+LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.id_registro TEXT IS 'Identificador del registro';
 
 COMMENT ON COLUMN FGUTIERRM1.Plan_de_Pagos.descripcion IS 'Descripcion';
 LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.descripcion IS 'DESC';
 LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.descripcion TEXT IS 'Descripcion';
 
-COMMENT ON COLUMN FGUTIERRM1.Plan_de_Pagos.usuario_creacion IS 'Usuario
-creacion';
+COMMENT ON COLUMN FGUTIERRM1.Plan_de_Pagos.usuario_creacion IS 'Usuario creacion';
 LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.usuario_creacion IS 'USCRE';
-LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.usuario_creacion TEXT IS 'Usuario
-creacion';
+LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.usuario_creacion TEXT IS 'Usuario creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Plan_de_Pagos.usuario_actualizacion IS 'Usuario
-actualizacion';
+COMMENT ON COLUMN FGUTIERRM1.Plan_de_Pagos.usuario_actualizacion IS 'Usuario actualizacion';
 LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.usuario_actualizacion IS 'USACT';
-LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.usuario_actualizacion TEXT IS 'Usuario
-actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.usuario_actualizacion TEXT IS 'Usuario actualizacion';
 
 COMMENT ON COLUMN FGUTIERRM1.Plan_de_Pagos.version_registro IS 'Version';
 LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.version_registro IS 'VRSRG';
@@ -73,5 +67,5 @@ LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.created_at TEXT IS 'Fecha creacion';
 
 COMMENT ON COLUMN FGUTIERRM1.Plan_de_Pagos.updated_at IS 'Fecha actualizacion';
 LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.updated_at IS 'UPDTM';
-LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.updated_at TEXT IS 'Fecha
-actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Plan_de_Pagos.updated_at TEXT IS 'Fecha actualizacion';
+

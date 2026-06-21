@@ -13,9 +13,7 @@
 -- Proyecto: Taller GitHub - IBM i
 -- =====================================================================
 
-CREATE OR REPLACE TABLE
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales FOR SYSTEM NAME
-DPMST
+CREATE OR REPLACE TABLE FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales FOR SYSTEM NAME DPMST
 (
     id_registro                    FOR COLUMN IDREG    BIGINT NOT NULL,
     descripcion                    FOR COLUMN DESC     VARCHAR(120),
@@ -31,101 +29,43 @@ DPMST
 )
 RCDFMT DPMSTREC;
 
-COMMENT ON TABLE FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales
-IS 'Cabecera Declaracion Patrimonial Personas Naturales';
+COMMENT ON TABLE FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales IS 'Cabecera Declaracion Patrimonial Personas Naturales';
 
-LABEL ON TABLE FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales IS
-'DPMST';
+LABEL ON TABLE FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales IS 'DPMST';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.id_registro IS
-'Identificador del registro';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.id_registro IS
-'IDREG';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.id_registro TEXT
-IS 'Identificador del registro';
+COMMENT ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.id_registro IS 'Identificador del registro';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.id_registro IS 'IDREG';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.id_registro TEXT IS 'Identificador del registro';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.descripcion IS
-'Descripcion';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.descripcion IS
-'DESC';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.descripcion TEXT
-IS 'Descripcion';
+COMMENT ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.descripcion IS 'Descripcion';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.descripcion IS 'DESC';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.descripcion TEXT IS 'Descripcion';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.usuario_creacion
-IS 'Usuario creacion';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.usuario_creacion
-IS 'USCRE';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.usuario_creacion
-TEXT IS 'Usuario creacion';
+COMMENT ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.usuario_creacion IS 'Usuario creacion';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.usuario_creacion IS 'USCRE';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.usuario_creacion TEXT IS 'Usuario creacion';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.usuario_actualiza
-cion
-IS 'Usuario actualizacion';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.usuario_actualiza
-cion
-IS 'USACT';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.usuario_actualiza
-cion
-TEXT IS 'Usuario actualizacion';
+COMMENT ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.usuario_actualizacion IS 'Usuario actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.usuario_actualizacion IS 'USACT';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.usuario_actualizacion TEXT IS 'Usuario actualizacion';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.version_registro
-IS 'Version';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.version_registro
-IS 'VRSRG';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.version_registro
-TEXT IS 'Version';
+COMMENT ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.version_registro IS 'Version';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.version_registro IS 'VRSRG';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.version_registro TEXT IS 'Version';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.observaciones IS
-'Observaciones';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.observaciones IS
-'OBSRV';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.observaciones
-TEXT IS 'Observaciones';
+COMMENT ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.observaciones IS 'Observaciones';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.observaciones IS 'OBSRV';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.observaciones TEXT IS 'Observaciones';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.estado_registro
-IS 'Estado';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.estado_registro
-IS 'ESTDO';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.estado_registro
-TEXT IS 'Estado';
+COMMENT ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.estado_registro IS 'Estado';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.estado_registro IS 'ESTDO';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.estado_registro TEXT IS 'Estado';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.created_at IS
-'Fecha creacion';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.created_at IS
-'CRTM';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.created_at TEXT
-IS 'Fecha creacion';
+COMMENT ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.created_at IS 'Fecha creacion';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.created_at IS 'CRTM';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.created_at TEXT IS 'Fecha creacion';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.updated_at IS
-'Fecha actualizacion';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.updated_at IS
-'UPDTM';
-LABEL ON COLUMN
-FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.updated_at TEXT
-IS 'Fecha actualizacion';
+COMMENT ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.updated_at IS 'Fecha actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.updated_at IS 'UPDTM';
+LABEL ON COLUMN FGUTIERRM1.Cabecera_Declaracion_Patrimonial_Personas_Naturales.updated_at TEXT IS 'Fecha actualizacion';
+

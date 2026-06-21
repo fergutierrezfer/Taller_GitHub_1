@@ -13,8 +13,7 @@
 -- Proyecto: Taller GitHub - IBM i
 -- =====================================================================
 
-CREATE OR REPLACE TABLE FGUTIERRM1.Archivo_mensajes_de_Errores FOR
-SYSTEM NAME MSSGS
+CREATE OR REPLACE TABLE FGUTIERRM1.Archivo_mensajes_de_Errores FOR SYSTEM NAME MSSGS
 (
     id_registro                    FOR COLUMN IDREG    BIGINT NOT NULL,
     descripcion                    FOR COLUMN DESC     VARCHAR(120),
@@ -30,65 +29,43 @@ SYSTEM NAME MSSGS
 )
 RCDFMT MSSGSREC;
 
-COMMENT ON TABLE FGUTIERRM1.Archivo_mensajes_de_Errores IS 'Archivo mensajes de
-Errores';
+COMMENT ON TABLE FGUTIERRM1.Archivo_mensajes_de_Errores IS 'Archivo mensajes de Errores';
 
 LABEL ON TABLE FGUTIERRM1.Archivo_mensajes_de_Errores IS 'MSSGS';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.id_registro IS
-'Identificador del registro';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.id_registro IS 'Identificador del registro';
 LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.id_registro IS 'IDREG';
-LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.id_registro TEXT IS
-'Identificador del registro';
+LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.id_registro TEXT IS 'Identificador del registro';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.descripcion IS
-'Descripcion';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.descripcion IS 'Descripcion';
 LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.descripcion IS 'DESC';
-LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.descripcion TEXT IS
-'Descripcion';
+LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.descripcion TEXT IS 'Descripcion';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.usuario_creacion IS
-'Usuario creacion';
-LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.usuario_creacion IS
-'USCRE';
-LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.usuario_creacion TEXT IS
-'Usuario creacion';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.usuario_creacion IS 'Usuario creacion';
+LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.usuario_creacion IS 'USCRE';
+LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.usuario_creacion TEXT IS 'Usuario creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.usuario_actualizacion
-IS 'Usuario actualizacion';
-LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.usuario_actualizacion IS
-'USACT';
-LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.usuario_actualizacion
-TEXT IS 'Usuario actualizacion';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.usuario_actualizacion IS 'Usuario actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.usuario_actualizacion IS 'USACT';
+LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.usuario_actualizacion TEXT IS 'Usuario actualizacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.version_registro IS
-'Version';
-LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.version_registro IS
-'VRSRG';
-LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.version_registro TEXT IS
-'Version';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.version_registro IS 'Version';
+LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.version_registro IS 'VRSRG';
+LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.version_registro TEXT IS 'Version';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.observaciones IS
-'Observaciones';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.observaciones IS 'Observaciones';
 LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.observaciones IS 'OBSRV';
-LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.observaciones TEXT IS
-'Observaciones';
+LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.observaciones TEXT IS 'Observaciones';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.estado_registro IS
-'Estado';
-LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.estado_registro IS
-'ESTDO';
-LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.estado_registro TEXT IS
-'Estado';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.estado_registro IS 'Estado';
+LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.estado_registro IS 'ESTDO';
+LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.estado_registro TEXT IS 'Estado';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.created_at IS 'Fecha
-creacion';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.created_at IS 'Fecha creacion';
 LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.created_at IS 'CRTM';
-LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.created_at TEXT IS 'Fecha
-creacion';
+LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.created_at TEXT IS 'Fecha creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.updated_at IS 'Fecha
-actualizacion';
+COMMENT ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.updated_at IS 'Fecha actualizacion';
 LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.updated_at IS 'UPDTM';
-LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.updated_at TEXT IS 'Fecha
-actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Archivo_mensajes_de_Errores.updated_at TEXT IS 'Fecha actualizacion';
+

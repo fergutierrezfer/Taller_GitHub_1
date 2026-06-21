@@ -13,8 +13,7 @@
 -- Proyecto: Taller GitHub - IBM i
 -- =====================================================================
 
-CREATE OR REPLACE TABLE FGUTIERRM1.Maestro_de_Cobranzas_Documentarias FOR
-SYSTEM NAME DCMST
+CREATE OR REPLACE TABLE FGUTIERRM1.Maestro_de_Cobranzas_Documentarias FOR SYSTEM NAME DCMST
 (
     id_registro                    FOR COLUMN IDREG    BIGINT NOT NULL,
     descripcion                    FOR COLUMN DESC     VARCHAR(120),
@@ -30,72 +29,43 @@ SYSTEM NAME DCMST
 )
 RCDFMT DCMSTREC;
 
-COMMENT ON TABLE FGUTIERRM1.Maestro_de_Cobranzas_Documentarias IS 'Maestro de
-Cobranzas Documentarias';
+COMMENT ON TABLE FGUTIERRM1.Maestro_de_Cobranzas_Documentarias IS 'Maestro de Cobranzas Documentarias';
 
 LABEL ON TABLE FGUTIERRM1.Maestro_de_Cobranzas_Documentarias IS 'DCMST';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.id_registro IS
-'Identificador del registro';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.id_registro IS
-'IDREG';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.id_registro TEXT
-IS 'Identificador del registro';
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.id_registro IS 'Identificador del registro';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.id_registro IS 'IDREG';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.id_registro TEXT IS 'Identificador del registro';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.descripcion IS
-'Descripcion';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.descripcion IS
-'DESC';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.descripcion TEXT
-IS 'Descripcion';
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.descripcion IS 'Descripcion';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.descripcion IS 'DESC';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.descripcion TEXT IS 'Descripcion';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.usuario_creacion
-IS 'Usuario creacion';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.usuario_creacion
-IS 'USCRE';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.usuario_creacion
-TEXT IS 'Usuario creacion';
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.usuario_creacion IS 'Usuario creacion';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.usuario_creacion IS 'USCRE';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.usuario_creacion TEXT IS 'Usuario creacion';
 
-COMMENT ON COLUMN
-FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.usuario_actualizacion IS 'Usuario
-actualizacion';
-LABEL ON COLUMN
-FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.usuario_actualizacion IS 'USACT';
-LABEL ON COLUMN
-FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.usuario_actualizacion TEXT IS
-'Usuario actualizacion';
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.usuario_actualizacion IS 'Usuario actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.usuario_actualizacion IS 'USACT';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.usuario_actualizacion TEXT IS 'Usuario actualizacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.version_registro
-IS 'Version';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.version_registro
-IS 'VRSRG';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.version_registro
-TEXT IS 'Version';
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.version_registro IS 'Version';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.version_registro IS 'VRSRG';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.version_registro TEXT IS 'Version';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.observaciones IS
-'Observaciones';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.observaciones IS
-'OBSRV';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.observaciones TEXT
-IS 'Observaciones';
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.observaciones IS 'Observaciones';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.observaciones IS 'OBSRV';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.observaciones TEXT IS 'Observaciones';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.estado_registro
-IS 'Estado';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.estado_registro IS
-'ESTDO';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.estado_registro
-TEXT IS 'Estado';
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.estado_registro IS 'Estado';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.estado_registro IS 'ESTDO';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.estado_registro TEXT IS 'Estado';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.created_at IS
-'Fecha creacion';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.created_at IS
-'CRTM';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.created_at TEXT IS
-'Fecha creacion';
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.created_at IS 'Fecha creacion';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.created_at IS 'CRTM';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.created_at TEXT IS 'Fecha creacion';
 
-COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.updated_at IS
-'Fecha actualizacion';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.updated_at IS
-'UPDTM';
-LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.updated_at TEXT IS
-'Fecha actualizacion';
+COMMENT ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.updated_at IS 'Fecha actualizacion';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.updated_at IS 'UPDTM';
+LABEL ON COLUMN FGUTIERRM1.Maestro_de_Cobranzas_Documentarias.updated_at TEXT IS 'Fecha actualizacion';
+
